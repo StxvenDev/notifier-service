@@ -7,7 +7,7 @@ import { CreateNotifierDto } from './dto/create-notifier.dto';
 export class NotifierController {
   constructor(private readonly notifierService: NotifierService) {}
 
-  @MessagePattern('createNotifier')
+  @MessagePattern('send-notification')
   create(@Payload() createNotifierDto: CreateNotifierDto) {
     return this.notifierService.sendSimpleEmail(createNotifierDto);
   }

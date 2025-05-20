@@ -1,8 +1,15 @@
+import { IsArray, IsOptional, IsString } from "class-validator";
+
 export class CreateNotifierDto {
 
-  to: string;
-  from: string;
+  @IsArray()
+  to: string[];
+
+
+  @IsString()
   message: string;
+
+  @IsOptional()
   urls : string[];
 
 }

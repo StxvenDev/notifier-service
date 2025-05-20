@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { NotifierModule } from './notifier/notifier.module';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { envs } from './config';
 
 @Module({
   imports: [
@@ -11,9 +12,12 @@ import { MailerModule } from '@nestjs-modules/mailer';
         port: 587,
         secure: false,
         auth: {
-          user: '',
-          pass: '',
-        }
+          user: envs.mailUser,
+          pass: envs.mailPassword,
+        },
+        tls: {
+          rejectUnauthorized: false,
+        },
       }
     })
   ],
